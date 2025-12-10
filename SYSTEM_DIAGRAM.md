@@ -43,15 +43,15 @@
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                      GUARDRAILS SYSTEM                                  │
 │  - Content Safety Check:                                                │
-│    • LLM-based context-aware moderation (primary)                      │
-│    • Keyword-based fallback with context checking                      │
-│    • Prohibited themes (violence, fear, etc.)                          │
+│    • LLM-based context-aware moderation (primary)                       │
+│    • Keyword-based fallback with context checking                       │
+│    • Prohibited themes (violence, fear, etc.)                           │
 │    • Inappropriate language detection                                   │
 │  - Age-Appropriateness Check:                                           │
 │    • Sentence length validation                                         │
 │    • Vocabulary complexity check                                        │
 │    • Positive elements verification                                     │
-│  - Error handling with fallback mechanisms                             │
+│  - Error handling with fallback mechanisms                              │
 │                                                                         │
 │  Output: Validation result (is_valid, violations, issues)               │
 └──────────────────────────────┬──────────────────────────────────────────┘
@@ -127,11 +127,11 @@
                                     │
                                     ▼
                     ┌───────────────────────────────┐
-                    │   STORY STORAGE                │
-                    │   - SQLite database            │
+                    │   STORY STORAGE               │
+                    │   - SQLite database           │
                     │   - Automatic persistence     │
-                    │   - Error handling & retries   │
-                    │   - WAL mode for concurrency   │
+                    │   - Error handling & retries  │
+                    │   - WAL mode for concurrency  │
                     └───────────────┬───────────────┘
                                     │
                                     ▼

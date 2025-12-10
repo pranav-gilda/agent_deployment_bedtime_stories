@@ -40,9 +40,9 @@ class StoryOrchestrator:
         
         if not result["is_valid"]:
             print("⚠️  Initial story failed guardrail checks. Attempting revision...")
-            # Try once more with explicit safety focus
-            revision_context = "Please ensure the story passes all safety and age-appropriateness checks."
-            result = self.storyteller.generate_story(user_request, revision_context)
+            # Try once more with explicit safety focus, but maintain variety
+            revision_context = "Please ensure the story passes all safety and age-appropriateness checks. Maintain the storytelling variety and style that was specified."
+            result = self.storyteller.generate_story(user_request, revision_context, variety_config=variety_config)
         
         story = result["story"]
         revision_count = 0

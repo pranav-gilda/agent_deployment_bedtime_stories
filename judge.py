@@ -165,22 +165,23 @@ VERDICT: {verdict}
     def generate_revision_prompt(self, original_story: str, judge_feedback: str, user_request: str) -> str:
         """Generate a prompt for revising the story based on judge feedback."""
         return f"""You are a skilled children's storyteller. Please revise the following story based on the judge's feedback.
-
-ORIGINAL USER REQUEST:
-{user_request}
-
-ORIGINAL STORY:
-{original_story}
-
-JUDGE'S FEEDBACK:
-{judge_feedback}
-
-Please create an improved version of the story that addresses all the feedback while maintaining the core narrative. Ensure the story is:
-- Appropriate for children aged {STORY_CONFIG['target_age_min']}-{STORY_CONFIG['target_age_max']}
-- Engaging and well-structured
-- Contains positive themes and a happy resolution
-- Uses age-appropriate vocabulary and sentence structure
-
-REVISED STORY:
-"""
+            
+            ORIGINAL USER REQUEST:
+            {user_request}
+            
+            ORIGINAL STORY:
+            {original_story}
+            
+            JUDGE'S FEEDBACK:
+            {judge_feedback}
+            
+            Please create an improved version of the story that addresses all the feedback while maintaining the core narrative AND the storytelling variety/style that was specified in the original instructions. Ensure the story is:
+            - Appropriate for children aged {STORY_CONFIG['target_age_min']}-{STORY_CONFIG['target_age_max']}
+            - Engaging and well-structured
+            - Contains positive themes and a happy resolution
+            - Uses age-appropriate vocabulary and sentence structure
+            - Maintains the narrative style, perspective, and variety approach from the original generation
+            
+            REVISED STORY:
+            """
 

@@ -157,7 +157,7 @@ Story Structure (Simple Adventure):
         
         revision_note = ""
         if revision_context:
-            revision_note = f"\n\nREVISION CONTEXT:\n{revision_context}\n\nPlease incorporate the feedback while maintaining the story's core elements."
+            revision_note = f"\n\nREVISION CONTEXT:\n{revision_context}\n\nPlease incorporate the feedback while maintaining the story's core elements AND the storytelling variety/style specified above."
         
         # Build personalized elements from categorization
         personalization = ""
