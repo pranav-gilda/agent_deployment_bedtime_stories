@@ -1,63 +1,142 @@
-# Hippocratic AI Coding Assignment
-Welcome to the [Hippocratic AI](https://www.hippocraticai.com) coding assignment
+# 🌙 Bedtime Story Generator
 
-## Overview
+A sophisticated AI-powered bedtime story generator that creates age-appropriate stories (ages 5-10) using GPT-3.5-turbo with an LLM judge, guardrails, and iterative refinement.
 
-This is a sophisticated bedtime story generator that creates age-appropriate stories (ages 5-10) using GPT-3.5-turbo with an LLM judge, guardrails, and iterative refinement. The system features:
+## 🎯 Overview
 
-- **LLM-based categorization** for better prompt understanding
-- **LLM judge** for quality evaluation and iterative refinement
-- **Age-appropriate guardrails** ensuring safety and appropriateness
-- **Parent-friendly configuration** with personas, values, and interests
-- **Story variety system** with different narrative styles and perspectives
-- **Story storage & persistence** using SQLite database
-- **Enhanced observability** with search, filtering, and statistics
-- **Streamlit UI** with user-friendly and debug views
+This system generates personalized bedtime stories through an agentic workflow that includes:
+- **LLM-based categorization** for understanding short and long prompts
+- **LLM judge** for quality evaluation with iterative refinement
+- **Age-appropriate guardrails** with LLM-based content moderation
+- **Story variety system** ensuring unique narratives each time
+- **Story storage & observability** with SQLite database
+- **Streamlit UI** with three distinct views
 
-## Instructions
-The attached code is a simple python script skeleton. Your goal is to take any simple bedtime story request and use prompting to tell a story appropriate for ages 5 to 10.
-- Incorporate a LLM judge to improve the quality of the story
-- Provide a block diagram of the system you create that illustrates the flow of the prompts and the interaction between judge, storyteller, user, and any other components you add
-- Do not change the openAI model that is being used. 
-- Please use your own openAI key, but do not include it in your final submission.
-- Otherwise, you may change any code you like or add any files
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.8+
+- OpenAI API key
+
+### Installation
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Create .env file with your API key
+echo "OPENAI_API_KEY=your_key_here" > .env
+```
+
+### Running the Application
+
+**Streamlit UI (Recommended):**
+```bash
+streamlit run app.py
+```
+
+**Command Line Interface:**
+```bash
+python main.py
+```
+
+## 📱 Three Views
+
+The Streamlit application provides three distinct interfaces:
+
+### 1. 👤 User View
+Simple, parent-friendly interface for generating stories with optional preferences.
+
+![User View](dashboard/User%20View.png)
+
+- Clean, intuitive interface
+- Parent settings (personas, values, interests)
+- One-click story generation
+- Quality indicators and feedback
+
+### 2. 📚 Story History
+Review and manage all generated stories with search, filtering, and statistics.
+
+![Story History](dashboard/Story%20History.png)
+
+- Search stories by keyword
+- Filter by category, score, date
+- View detailed metadata
+- Export stories as JSON
+- Statistics dashboard
+
+### 3. 🔧 Debug View
+Advanced observability and hyperparameter tuning for developers.
+
+![Debug Tuning](dashboard/Debug%20Tuning.png)
+
+- Real-time generation monitoring
+- Hyperparameter tuning controls
+- Detailed observability metrics
+- Judge feedback analysis
+- Guardrail validation details
+
+## 🏗️ System Architecture
+
+The system uses an orchestrated agentic workflow:
+
+1. **Categorizer** - Analyzes user request and extracts key elements
+2. **Storyteller** - Generates story with variety system (narrative style, perspective, structure)
+3. **Judge** - Evaluates story quality and provides feedback
+4. **Guardrails** - Ensures age-appropriateness and safety
+5. **Orchestrator** - Coordinates iterative refinement loop
+6. **Storage** - Persists stories with metadata for observability
+
+See [SYSTEM_DIAGRAM.md](SYSTEM_DIAGRAM.md) for detailed architecture.
+
+## ✨ Key Features
+
+- **Automatic Variety**: Each story uses a unique narrative style, perspective, and structure
+- **Iterative Refinement**: Stories are improved based on judge feedback
+- **Robust Error Handling**: Retries, timeouts, and graceful degradation
+- **Input Validation**: Comprehensive sanitization and validation
+- **Structured Outputs**: JSON mode for reliable parsing
+- **Parent-Friendly Config**: Intuitive settings (personas, values, interests)
+
+## 📖 Documentation
+
+- [QUICK_START.md](QUICK_START.md) - Setup and basic usage
+- [STREAMLIT_GUIDE.md](STREAMLIT_GUIDE.md) - Detailed UI guide
+- [SYSTEM_DIAGRAM.md](SYSTEM_DIAGRAM.md) - Architecture and data flow
+- [IMPROVEMENTS.md](IMPROVEMENTS.md) - Feature documentation
+
+## 🔒 Safety & Guardrails
+
+- Age-appropriate content validation (ages 5-10)
+- LLM-based content moderation with keyword fallback
+- Prohibited theme detection
+- Required positive elements enforcement
+- Vocabulary and sentence complexity checks
+
+## 🛠️ Configuration
+
+All system parameters can be tuned in `config.py`:
+- Story generation parameters (temperature, tokens, arc type)
+- Judge evaluation criteria and thresholds
+- Guardrail settings and prohibited themes
+- Orchestration settings (refinement, categorization)
+
+## 📝 Requirements
+
+- `openai>=1.0.0` - OpenAI API client
+- `streamlit>=1.28.0` - Web UI framework
+- `python-dotenv>=1.0.0` - Environment variable management
+- `tenacity>=8.2.0` - Retry logic with exponential backoff
+
+## 🎓 Assignment Context
+
+This project was developed as a coding assignment demonstrating:
+- Agentic workflow design with multiple LLM agents
+- Prompt engineering and iterative refinement strategies
+- Production-ready error handling and validation
+- Observability and debugging capabilities
+- User experience design for different user types
 
 ---
 
-## Rules
-- This assignment is open-ended
-- You may use any resources you like with the following restrictions
-   - They must be resources that would be available to you if you worked here (so no other humans, no closed AIs, no unlicensed code, etc.)
-   - Allowed resources include but not limited to Stack overflow, random blogs, chatGPT et al
-   - You have to be able to explain how the code works, even if chatGPT wrote it
-- DO NOT PUSH THE API KEY TO GITHUB. OpenAI will automatically delete it
-
----
-
-## What does "tell a story" mean?
-It should be appropriate for ages 5-10. Other than that it's up to you. Here are some ideas to help get the brain-juices flowing!
-- Use story arcs to tell better stories
-- Allow the user to provide feedback or request changes
-- Categorize the request and use a tailored generation strategy for each category
-
----
-
-## How will I be evaluated
-Good question. We want to know the following:
-- The efficacy of the system you design to create a good story
-- Are you comfortable using and writing a python script
-- What kinds of prompting strategies and agent design strategies do you use
-- Are the stories your tool creates good?
-- Can you understand and deconstruct a problem
-- Can you operate in an open-ended environment
-- Can you surprise us
-
----
-
-## Other FAQs
-- How long should I spend on this? 
-No more than 2-3 hours
-- Can I change what the input is? 
-Sure
-- How long should the story be?
-You decide
+**Note**: Remember to add your OpenAI API key to `.env` file. Never commit API keys to version control.

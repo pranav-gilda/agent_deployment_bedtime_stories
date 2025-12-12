@@ -33,7 +33,7 @@
 │  - Generates story with appropriate structure                           │
 │  - Includes variety system (narrative style, perspective, structure)    │
 │  - Retry logic with exponential backoff                                 │
-│  - Input validation and sanitization                                   │
+│  - Input validation and sanitization                                    │
 │                                                                         │
 │  Input: User request + Category + Safety guidelines + Variety config    │
 │  Output: Generated story                                                │
